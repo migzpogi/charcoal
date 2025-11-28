@@ -57,6 +57,12 @@ alias kk="k -a -h --no-vcs"     # wrapper for k
 ### `~/.myscripts/`
 I store my scripts in this directory. Do not forget to run `chmod -R +x ~/.myscripts`
 
+## Git SSH
+```
+ssh-keygen -t ed25519 -C "your_email@example.com"
+cat ~/.ssh/id_ed25519.pub
+```
+
 ## Ubuntu Commands
 ### `apt-get update`
 It doesn't actually install new versions of software. Instead, it updates the package lists for upgrades for packages that need upgrading, as well as new packages that have just come to the repositories.  
@@ -76,6 +82,11 @@ Installs the newest versions of all currently installed packages on a system.
 ``` 
 su - devuser
 sudo ls /
+```
+
+### python3-venv
+```
+sudo apt install python3.12-venv
 ```
 
 ## Useful Links
