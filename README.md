@@ -57,3 +57,4 @@ sudo apt install python3.12-venv
 ## Useful Links
 * [GitHub MD Formatting Syntax](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax)
 * [Tabs in project readme section](https://github.com/orgs/community/discussions/86658)
+* [Django](https://github.com/django)
