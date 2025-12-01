@@ -7,6 +7,7 @@ Contents
 I usually start my projects by creating a repository in GitHub. After thinking of a name and cloning it to my local directory, I commit a single Python file (or edit the pre-made README.md) and push it to verify that everything works fine. Then I create a virtual environment (since I mostly work with Python), update my aliases so I can activate it anytime, and finally boot up PyCharm.  
 
 ## zsh
+[zsh](zsh/zsh.md)
 
 
 ### Aliases
