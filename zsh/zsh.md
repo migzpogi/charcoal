@@ -1,5 +1,12 @@
-## CLI Set Up
-### zsh
+## zsh
+Z shell (zsh) is an enhanced alternative for the Unix shell Bash.
+
+### Why I like zsh
+* Intelligent tab autocompletion
+* Syntax highlighting
+* Support for plug-ins and themes
+
+### Installation and initial set up
 ```
 # Install zsh
 sudo apt update
