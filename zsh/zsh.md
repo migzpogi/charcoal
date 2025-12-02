@@ -36,9 +36,21 @@ cd ~/.oh-my-zsh/plugins
 git clone https://github.com/supercrabtree/k $ZSH_CUSTOM/plugins/k
 ```
 
-### ~/.zshrc
-Some configurations for zsh
+### zsh configurations
+Some configurations for zsh. Edit `~/.zshrc`.
 ```
 DISABLE_UNTRACKED_FILES_DIRTY="true"   # uncomment
 plugins(git zsh-syntax-highlighting)
 ```
+
+### Aliases
+List of aliases I use. Edit `~/.zshrc`.
+```
+alias whichsh="ps -p $$"        # show active shell
+alias whichos="lsb_release -a"  # show os name
+alias editzsh="vi ~/.zshrc"     # edit zshrc
+alias sourze="source ~/.zshrc"  # source zshrc
+alias kk="k -a -h --no-vcs"     # wrapper for k
+```
+
+
