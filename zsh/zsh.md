@@ -4,7 +4,7 @@ Z shell (zsh) is an enhanced alternative for the Unix shell Bash.
 ### Why I like zsh
 * Intelligent tab autocompletion
 * Syntax highlighting
-* Support for plug-ins and themes
+* Support for plugins and themes
 
 ### Installation and initial set up
 ```
@@ -19,13 +19,12 @@ chsh -s $(which zsh)
 # Pressing 2 will create a ~/.zshrc file with some configurations set
 ```
 
-### ohmyzsh
-See [ohmyzsh](https://github.com/ohmyzsh/ohmyzsh) for installation instructions.
-```
-ls ~/.oh-my-zsh/plugins     # plugins location
-```
+### Oh My Zsh
+A framework for managing zsh configurations. See [ohmyzsh](https://github.com/ohmyzsh/ohmyzsh).
 
 ### Plugins
+Plugins are located at: `~/.oh-my-zsh/plugins`  
+
 * [zsh-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting/tree/master)
 ```
 cd ~/.oh-my-zsh/plugins
