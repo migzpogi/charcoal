@@ -1,23 +1,14 @@
 Contents
 * [Way of Work](#way-of-work)
+* [CLI](#command-line-interface)
 * [Ubuntu Commands](#ubuntu-commands)
 * [Useful Links](#useful-links)
 
 ## Way of Work
 I usually start my projects by creating a repository in GitHub. After thinking of a name and cloning it to my local directory, I commit a single Python file (or edit the pre-made README.md) and push it to verify that everything works fine. Then I create a virtual environment (since I mostly work with Python), update my aliases so I can activate it anytime, and finally boot up PyCharm.  
 
-## zsh
-[zsh](zsh/zsh.md)
-
-
-### Aliases
-```
-alias whichsh="ps -p $$"        # show active shell
-alias whichos="lsb_release -a"  # show os name
-alias editzsh="vi ~/.zshrc"     # edit zshrc
-alias sourze="source ~/.zshrc"  # source zshrc
-alias kk="k -a -h --no-vcs"     # wrapper for k
-```
+## Command Line Interface
+Z shell is my preferred command line interpreter. [More information](zsh/zsh.md)
 
 ### `~/.myscripts/`
 I store my scripts in this directory. Do not forget to run `chmod -R +x ~/.myscripts`
