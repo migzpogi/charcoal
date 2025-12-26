@@ -1,0 +1,29 @@
+{
+  // Python docstring format configuration
+  "autoDocstring.docstringFormat": "sphinx",
+  
+  // Alternative formats you can use:
+  // "autoDocstring.docstringFormat": "numpy"
+  // "autoDocstring.docstringFormat": "sphinx"
+  // "autoDocstring.docstringFormat": "google"
+  
+  // Auto-generate docstring on typing triple quotes
+  "autoDocstring.generateDocstringOnEnter": true,
+  
+  // Start docstring on new line
+  "autoDocstring.startOnNewLine": true,
+  
+  // Include name in docstring
+  "autoDocstring.includeName": true,
+  
+  // Include type hints in docstring
+  "autoDocstring.includeExtendedSummary": false,
+  
+  // Custom template (optional - uses default for selected format)
+  // "autoDocstring.customTemplatePath": "",
+  
+  // Python-specific settings
+  "python.languageServer": "None",
+  "python.analysis.typeCheckingMode": "basic"
+}
+

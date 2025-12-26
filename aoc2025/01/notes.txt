@@ -1,0 +1,61 @@
+Discuss the advantages and disadavantages of using file.read() and file.readlines()
+
+Here’s a concise comparison.
+    file.read()
+        Pros: Simple; one call gets the whole file; good when you truly need the entire contents as a single string; fewer syscalls vs looping.
+        Cons: Loads the entire file into memory—can blow up on large files; no natural line boundaries, so you must split if you need lines; harder to stream/process incrementally.
+    file.readlines()
+        Pros: Gives you a list of lines right away; convenient when you want random access by line index; preserves line breaks unless stripped; still a single call.
+        Cons: Also reads the whole file into memory, plus list overhead; can be slower and heavier than iterating line-by-line for large files; less flexible than a generator for streaming.
+    Often better alternatives:
+        Iterate over the file object (for line in f:) to stream and keep memory low.
+        Use f.read(size) or iter(lambda: f.read(chunk_size), "") for chunked reads when you need raw bytes/strings but not all at once.
+
+-----
+
+Okay, now that I use the for line in f methodology to avoid loading the entire file into memory, if I have operations that need to be done per line, should I store it first in a list, then do it later? Or the moment I read the line from the file, I execute the operation immediately
+
+Process as you read unless you truly need all lines at once. A simple rule:
+    Stream/process immediately when:
+        Work per line is independent (e.g., counting, parsing, writing transformed output).
+        You want low memory use and don’t need to revisit lines.
+        You can emit results incrementally (e.g., write out, update aggregates).
+    Store lines first when:
+        You need multiple passes, sorting, random access, look-ahead/behind beyond a small buffer.
+        You need the full dataset to compute something (e.g., global stats that aren’t easily maintained incrementally).
+        You need to batch for performance (e.g., vectorized operations, DB bulk inserts).
+    Middle ground:
+        Keep a small rolling window/buffer (queue/deque) if you only need limited look-behind/look-ahead.
+        Batch N lines at a time to reduce overhead on downstream calls while keeping memory bounded.
+        Maintain streaming aggregates (counts, sums, min/max, sketches) to avoid storing everything.
+Default: process per line as you iterate; only accumulate when there’s a clear need for multi-pass, random access, or batching benefits.
+
+-----
+
+If I process immediately per line, and something breaks, and I want to resume on my next run, what is an elegant solution for that
+
+A few practical patterns to make streaming resumable:
+    Track progress: store the last processed byte offset or line number in a small state file (e.g., JSON). On startup, seek to that offset or fast-forward lines, then continue.
+    Idempotent output: make the per-line operation safe to rerun (e.g., upserts by key, de-dup checks, or writing deterministic outputs) so you can simply restart without special handling.
+    Atomic/batched writes: write results to a temp file and rename when a chunk is done, or commit DB work in small batches. This limits rework to the last partial batch.
+    Periodic checkpoints: every N lines (or seconds), flush output and persist the checkpoint. Choose N so redo is tolerable.
+    Guard against partial writes: if writing line-for-line, include the source line index or a unique key in the output. On resume, skip anything already written.
+    Recovery flow: on start, read the checkpoint, position the file (f.seek(offset) if using offsets), skip any already-done lines if needed, then continue streaming.
+Default approach: make the operation idempotent and record a checkpoint every so often; on restart, seek/skip to that checkpoint and continue.
+
+-----
+
+Verb choice guidelines
+
+parse - Converting strings/text into structured data
+extract - pulling out specific information from a larger structure
+get - generic retrieval, often too vague
+retrieve - fetch from a storage/remote location
+read - reading from a source (file/stream)
+
+-----
+
+Parameter naming guidelines
+
+Reflect its semantic meaning rather than its source
+    Instead of foo(line), use foo(rotation_string)
