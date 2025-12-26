@@ -29,20 +29,26 @@ def is_pid_invalid(pid):
 
     if len(pid)%2 != 0:
         return False
-    
 
-    return True
+    midpoint = int(len(pid)/2)
+
+    if pid[0:midpoint] == pid[midpoint:]:
+        return True
+    else:
+        return False
 
 
 if __name__ == '__main__':
 
-    with open('test2.txt', 'r') as f:
+    with open('input.txt', 'r') as f:
         for line in f:
             pid_ranges = line.strip('\n')
 
+    pid_sum = 0
+
     for pid_range in pid_ranges.split(','):
-        for product_id in expand_pid_range(pid_range):
-            print(product_id, (is_pid_invalid(product_id)))
+        for pid in expand_pid_range(pid_range):
+            if is_pid_invalid(pid):
+                pid_sum += pid
 
-
-        print('----')
+    print(pid_sum)
