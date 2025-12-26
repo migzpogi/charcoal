@@ -24,6 +24,7 @@
   
   // Python-specific settings
   "python.languageServer": "None",
-  "python.analysis.typeCheckingMode": "basic"
+  "python.analysis.typeCheckingMode": "basic",
+  "cursorpyright.analysis.typeCheckingMode": "basic"
 }
 
