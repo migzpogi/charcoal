@@ -24,7 +24,6 @@ def find_largest_digit_pos(num):
 
 
 if __name__ == '__main__':
-    total_joltage = 0
     batteries_required = 12
     joltages = []
     
